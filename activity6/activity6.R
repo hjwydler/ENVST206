@@ -89,10 +89,15 @@ spplot(g1966, "gdiff", main="% change in area", col="transparent")
 #describe glacial loss in GNP using spplot and numerical calculations
 sd(gAll$gdiff) #20.71525
 mean(gAll$gdiff)#39.02311
-max(gAll$area66) #2059377, Harrison Glacier
-which.max(gAll$area66) #13, = HARRISON GLACIER
-
+max(gAll$area66) #2059377, Harrison Glacier 
 min(gAll$area66) #29140.12, Gem Glacier
+
+
+which.max(gAll$area66) #13, = HARRISON GLACIER LARGEST AREA
+which.min(gAll$area66) #9, = GEM GLACIER SMALLEST AREA
+
+which.max(gAll$gdiff) #5, BOULDER GLACIER GREATEST LOSS
+which.min(gAll$gdiff) #25, PUMPELLY GLACIER LEAST LOSS
 
 mean(gAll$area66) #554909.6
 mean(gAll$area15) #363557.2
@@ -101,12 +106,13 @@ mean(gAll$area15) #363557.2
 #map showing glacier footprints in 1966 and 2015 for glacier w/ largest percent loss
 #legend designating footprint year and descriptive title
 
-#look at Harrison Glacier in 1966
-harrison66 <- g1966[g1966@data$GLACNAME == "Harrison Glacier",]
-harrison15 <- g2015[g2015@data$GLACNAME == "Harrison Glacier",]
+#look at Boulder Glacier (MOST LOSS) in 1966/2015
+boulder66 <- g1966[g1966@data$GLACNAME == "Boulder Glacier",]
+boulder15 <- g2015[g2015@data$GLACNAME == "Boulder Glacier",]
 
-plot(harrison66, main = "Harrison Glacier Area Cover 1966 vs 2015", col = "brown1", border="grey50")
-plot(harrison15, col = "lightblue2", border = "grey50", add=TRUE)
+
+plot(boulder66, main = "Boulder Glacier Area Cover (M^2) 1966 vs 2015", col = "brown1", border="grey50")
+plot(boulder15, col = "lightblue2", border = "grey50", add=TRUE)
 
 legend("bottomright", 
        c("1966", "2015"),
@@ -116,6 +122,20 @@ legend("bottomright",
        bty="n")
 
 
+#Look at Pumpelly Glacier (LEAST LOSS)
+pumpelly66 <- g1966[g1966@data$GLACNAME == "Pumpelly Glacier",]
+pumpelly15 <- g2015[g2015@data$GLACNAME == "Pumpelly Glacier",]
+
+
+plot(pumpelly66, main = "Pumpelly Glacier Area Cover (M^2) 1966 vs 2015", col = "brown1", border="grey50")
+plot(pumpelly15, col = "lightblue2", border = "grey50", add=TRUE)
+
+legend("bottomright", 
+       c("1966", "2015"),
+       col=c("brown1", "lightblue2"),
+       pch=19,
+       lwd=1,
+       bty="n")
 
 
 
