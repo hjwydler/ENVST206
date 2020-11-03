@@ -15,14 +15,31 @@ ice2019 <- readOGR("/Users/ginnytw/Desktop/EnvstData/a07/sea_ice/extent_N_201909
                             ##############################
                             ####SUMMARY STATISTICS (5)####
                             ##############################
-##STRUGGLING WITH THIS PART##
+seaiceAll <- readOGR("/Users/ginnytw/Desktop/EnvstData/a07/sea_ice_all")
+head(seaiceAll@data)
+plot(seaiceAll) #looking from the perspective of the north pole
+plot(seaiceAll@data$year == 1979,])
 
+
+     
+aggregate(seaiceAll@data$area, by=list(seaiceAll@data$year), FUN="mean", na.rm=TRUE)
+
+
+
+    seaiceaAll@proj4string
+seaiceAll
+
+sum(area[seaiceAll@data$year == 1979,])
+    
+    
+seaiceYears <- seaiceAll@data$year
+seaiceAreas <- seaiceAll@data$area
+seaiceAreas <- (area(seaiceAll@data))
                             ##############################
                             ##########PLOT (5)############
                             ##############################
 #map showing sea ice extent in 1979 and 2019 
 #legend designating ice extent year and colors
-icetotal
 plot(ice1979, main = "Arctic Sea Ice Extent 1979 vs 2019", col = "brown1", border="grey50")
 plot(ice2019, col = "lightblue2", border = "grey50", add=TRUE)
 
